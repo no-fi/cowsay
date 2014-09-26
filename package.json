@@ -1,9 +1,11 @@
 {
   "name": "cowsay",
   "main": "./lib/cowsay",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A somple cowsay wrapper for atom",
-  "activationEvents": ["cowsay:cowsay"],
+  "activationEvents": [
+    "cowsay:cowsay"
+  ],
   "repository": "https://github.com/rafadc/cowsay",
   "license": "MIT",
   "engines": {
