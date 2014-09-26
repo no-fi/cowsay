@@ -10,6 +10,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "cowsay": "1.0.3"
+    "cowsay": "1.0.3",
+    "temp": "~0.6.0"
   }
 }

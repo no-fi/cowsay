@@ -1,30 +1,43 @@
 {WorkspaceView} = require 'atom'
 Cowsay = require '../lib/cowsay'
-
-# Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
-#
-# To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
-# or `fdescribe`). Remove the `f` to unfocus the block.
+temp = require 'temp'
+path = require 'path'
 
 describe "Cowsay", ->
   activationPromise = null
+  [editor, buffer] = []
 
   beforeEach ->
     atom.workspaceView = new WorkspaceView
+    atom.workspace = atom.workspaceView.model
     activationPromise = atom.packages.activatePackage('cowsay')
+    directory = temp.mkdirSync()
+    atom.project.setPath(directory)
+    filePath = path.join(directory, 'atom-cowsay.txt')
+    waitsForPromise ->
+      atom.workspace.open(filePath).then (o) -> editor = o
 
-  describe "when the cowsay:toggle event is triggered", ->
-    it "attaches and then detaches the view", ->
-      expect(atom.workspaceView.find('.cowsay')).not.toExist()
+  describe "when the cowsay:cowsay event is triggered", ->
+    it "keeps what is selected", ->
+      editor.insertText('Holy Cow!')
+      editor.selectAll()
 
-      # This is an activation event, triggering it will cause the package to be
-      # activated.
-      atom.workspaceView.trigger 'cowsay:toggle'
+      atom.workspaceView.trigger 'cowsay:cowsay'
 
       waitsForPromise ->
         activationPromise
 
       runs ->
-        expect(atom.workspaceView.find('.cowsay')).toExist()
-        atom.workspaceView.trigger 'cowsay:toggle'
-        expect(atom.workspaceView.find('.cowsay')).not.toExist()
+        expect(editor.getText()).toContain("Holy Cow!")
+
+    it "prints something else", ->
+      editor.insertText('Holy Cow!')
+      editor.selectAll()
+
+      atom.workspaceView.trigger 'cowsay:cowsay'
+
+      waitsForPromise ->
+        activationPromise
+
+      runs ->
+        expect(editor.getText()).not.toEqual("Holy Cow!")
