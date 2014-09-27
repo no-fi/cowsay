@@ -1,4 +1,4 @@
-## 0.1.1 - Small fixes
+## 0.1.3 - Small fixes
 * Corrected typo in description of package
 * Corrected version numbers in changelog
 
