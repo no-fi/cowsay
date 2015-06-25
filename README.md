@@ -20,6 +20,10 @@ Just select a text and invoke cowsay command or press `crtl-l`.
 
 ## Changelog
 
+### 0.2.1
+
+ - BUG: Shortcut is working again
+
 ### 0.2.0
 
  - Support for atom 1.0
