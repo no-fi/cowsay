@@ -1,6 +1,10 @@
-module.exports =
-  activate: ->
-    atom.workspaceView.command "cowsay:cowsay", => @cowsay()
+require 'atom'
+
+module.exports = Cowsay =
+  subscriptions: null
+
+  activate: (state) ->
+    atom.commands.add 'atom-workspace', 'cowsay:cowsay': => @cowsay()
 
   cowsay: ->
     editor = atom.workspace.getActivePaneItem()

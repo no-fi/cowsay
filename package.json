@@ -1,7 +1,7 @@
 {
   "name": "cowsay",
   "main": "./lib/cowsay",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A simple cowsay wrapper for atom",
   "activationCommands": {
     "atom-text-editor": ["cowsay:cowsay"]

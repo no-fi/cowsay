@@ -4,7 +4,7 @@ This is a small wrapper for cowsay for Atom. Just a small fun package. It takes 
 
 ## Usage
 
-Just select a text and invoke cowsay command or press `crtl-c ctrl-s`.
+Just select a text and invoke cowsay command or press `crtl-l`.
 
 ```
  _____________
@@ -17,3 +17,10 @@ Just select a text and invoke cowsay command or press `crtl-c ctrl-s`.
                 ||     ||
 
 ```
+
+## Changelog
+
+### 0.2.0
+
+ - Support for atom 1.0
+ - Changed keybinding to avoid collisions in windows and linux
