@@ -12,4 +12,4 @@ module.exports = Cowsay =
     if selection.getText()
       cow = require 'cowsay'
       cowsaid = cow.say({text: selection.getText()})
-      selection.insertText("\n#{cowsaid}\n")
+      selection.insertText("\n#{cowsaid}\n", {select: true})
